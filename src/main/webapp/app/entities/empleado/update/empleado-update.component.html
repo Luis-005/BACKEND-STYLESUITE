@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-empleado-heading" data-cy="EmpleadoCreateUpdateHeading" jhiTranslate="backend2App.empleado.home.createOrEditLabel">
+        Create or edit a Empleado
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backend2App.empleado.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="backend2App.empleado.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_apellido" jhiTranslate="backend2App.empleado.apellido">Apellido</label>
+          <input type="text" class="form-control" name="apellido" id="field_apellido" data-cy="apellido" formControlName="apellido" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cargo" jhiTranslate="backend2App.empleado.cargo">Cargo</label>
+          <input type="text" class="form-control" name="cargo" id="field_cargo" data-cy="cargo" formControlName="cargo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_salario" jhiTranslate="backend2App.empleado.salario">Salario</label>
+          <input type="number" class="form-control" name="salario" id="field_salario" data-cy="salario" formControlName="salario" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_urlmg" jhiTranslate="backend2App.empleado.urlmg">Urlmg</label>
+          <input type="text" class="form-control" name="urlmg" id="field_urlmg" data-cy="urlmg" formControlName="urlmg" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_estado" jhiTranslate="backend2App.empleado.estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'backend2App.EstadoEmpleadoEnum.null' | translate }}</option>
+            @for (estadoEmpleadoEnum of estadoEmpleadoEnumValues; track $index) {
+              <option [value]="estadoEmpleadoEnum">{{ 'backend2App.EstadoEmpleadoEnum.' + estadoEmpleadoEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_establecimientoId" jhiTranslate="backend2App.empleado.establecimientoId"
+            >Establecimiento Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="establecimientoId"
+            id="field_establecimientoId"
+            data-cy="establecimientoId"
+            formControlName="establecimientoId"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

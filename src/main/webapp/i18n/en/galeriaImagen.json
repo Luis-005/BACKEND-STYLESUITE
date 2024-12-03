@@ -1,0 +1,27 @@
+{
+  "backend2App": {
+    "galeriaImagen": {
+      "home": {
+        "title": "Galeria Imagens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Galeria Imagen",
+        "createOrEditLabel": "Create or edit a Galeria Imagen",
+        "notFound": "No Galeria Imagens found"
+      },
+      "created": "A new Galeria Imagen is created with identifier {{ param }}",
+      "updated": "A Galeria Imagen is updated with identifier {{ param }}",
+      "deleted": "A Galeria Imagen is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Galeria Imagen {{ id }}?"
+      },
+      "detail": {
+        "title": "Galeria Imagen"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "urlImagen": "Url Imagen",
+      "establecimientoId": "Establecimiento Id"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (establecimiento(); as establecimientoRef) {
+      <div>
+        <h2 data-cy="establecimientoDetailsHeading">
+          <span jhiTranslate="backend2App.establecimiento.detail.title">Establecimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.direccion">Direccion</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.direccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.correoElectronico">Correo Electronico</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.correoElectronico }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.urlImg">Url Img</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.urlImg }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.horaApertura">Hora Apertura</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.horaApertura }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.horaCierre">Hora Cierre</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.horaCierre }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.establecimiento.userId">User Id</span></dt>
+          <dd>
+            <span>{{ establecimientoRef.userId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/establecimiento', establecimientoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

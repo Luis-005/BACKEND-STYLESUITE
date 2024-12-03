@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-producto-heading" data-cy="ProductoCreateUpdateHeading" jhiTranslate="backend2App.producto.home.createOrEditLabel">
+        Create or edit a Producto
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backend2App.producto.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="backend2App.producto.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descripcion" jhiTranslate="backend2App.producto.descripcion">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_precio" jhiTranslate="backend2App.producto.precio">Precio</label>
+          <input type="number" class="form-control" name="precio" id="field_precio" data-cy="precio" formControlName="precio" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cantidad" jhiTranslate="backend2App.producto.cantidad">Cantidad</label>
+          <input type="number" class="form-control" name="cantidad" id="field_cantidad" data-cy="cantidad" formControlName="cantidad" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_urlImg" jhiTranslate="backend2App.producto.urlImg">Url Img</label>
+          <input type="text" class="form-control" name="urlImg" id="field_urlImg" data-cy="urlImg" formControlName="urlImg" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_categoriaProductoId" jhiTranslate="backend2App.producto.categoriaProductoId"
+            >Categoria Producto Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="categoriaProductoId"
+            id="field_categoriaProductoId"
+            data-cy="categoriaProductoId"
+            formControlName="categoriaProductoId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_establecimientoId" jhiTranslate="backend2App.producto.establecimientoId"
+            >Establecimiento Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="establecimientoId"
+            id="field_establecimientoId"
+            data-cy="establecimientoId"
+            formControlName="establecimientoId"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

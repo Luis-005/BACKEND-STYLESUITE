@@ -57,6 +57,7 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(authz ->
                 // prettier-ignore
                 authz
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/admin/users/{login}")).permitAll()
                     .requestMatchers(mvc.pattern("/index.html"), mvc.pattern("/*.js"), mvc.pattern("/*.txt"), mvc.pattern("/*.json"), mvc.pattern("/*.map"), mvc.pattern("/*.css")).permitAll()
                     .requestMatchers(mvc.pattern("/*.ico"), mvc.pattern("/*.png"), mvc.pattern("/*.svg"), mvc.pattern("/*.webapp")).permitAll()
                     .requestMatchers(mvc.pattern("/app/**")).permitAll()
@@ -65,6 +66,15 @@ public class SecurityConfiguration {
                     .requestMatchers(mvc.pattern("/swagger-ui/**")).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/authenticate")).permitAll()
                     .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/authenticate")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/authenticate")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/authenticate")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/establecimientos")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/account")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/productos/**")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/categoria-productos")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/personas")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/personas")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/establecimientos")).permitAll()
                     .requestMatchers(mvc.pattern("/api/register")).permitAll()
                     .requestMatchers(mvc.pattern("/api/activate")).permitAll()
                     .requestMatchers(mvc.pattern("/api/account/reset-password/init")).permitAll()

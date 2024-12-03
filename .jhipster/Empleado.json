@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20241202190021"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cargo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salario",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "urlmg",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoEmpleadoEnum",
+      "fieldValues": "DISPONIBLE,OCUPADO,SUSPENDIDO"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Empleado",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

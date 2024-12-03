@@ -1,0 +1,59 @@
+{
+  "annotations": {
+    "changelogDate": "20241202190019"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaCita",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "duracion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoCitaEnum",
+      "fieldValues": "PENDIENTE,CONFIRMADA,CANCELADA,PAGADA,OTRO"
+    },
+    {
+      "fieldName": "personaId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombrePersona",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombreEstablecimiento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "servicioId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "empleadoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombreEmpleado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valorServicio",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "name": "Cita",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

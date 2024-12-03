@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cita-heading" data-cy="CitaCreateUpdateHeading" jhiTranslate="backend2App.cita.home.createOrEditLabel">
+        Create or edit a Cita
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backend2App.cita.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaCita" jhiTranslate="backend2App.cita.fechaCita">Fecha Cita</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaCita"
+              data-cy="fechaCita"
+              type="datetime-local"
+              class="form-control"
+              name="fechaCita"
+              formControlName="fechaCita"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_duracion" jhiTranslate="backend2App.cita.duracion">Duracion</label>
+          <input type="number" class="form-control" name="duracion" id="field_duracion" data-cy="duracion" formControlName="duracion" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_estado" jhiTranslate="backend2App.cita.estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'backend2App.EstadoCitaEnum.null' | translate }}</option>
+            @for (estadoCitaEnum of estadoCitaEnumValues; track $index) {
+              <option [value]="estadoCitaEnum">{{ 'backend2App.EstadoCitaEnum.' + estadoCitaEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_personaId" jhiTranslate="backend2App.cita.personaId">Persona Id</label>
+          <input type="number" class="form-control" name="personaId" id="field_personaId" data-cy="personaId" formControlName="personaId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombrePersona" jhiTranslate="backend2App.cita.nombrePersona">Nombre Persona</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombrePersona"
+            id="field_nombrePersona"
+            data-cy="nombrePersona"
+            formControlName="nombrePersona"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_establecimientoId" jhiTranslate="backend2App.cita.establecimientoId"
+            >Establecimiento Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="establecimientoId"
+            id="field_establecimientoId"
+            data-cy="establecimientoId"
+            formControlName="establecimientoId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombreEstablecimiento" jhiTranslate="backend2App.cita.nombreEstablecimiento"
+            >Nombre Establecimiento</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nombreEstablecimiento"
+            id="field_nombreEstablecimiento"
+            data-cy="nombreEstablecimiento"
+            formControlName="nombreEstablecimiento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_servicioId" jhiTranslate="backend2App.cita.servicioId">Servicio Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="servicioId"
+            id="field_servicioId"
+            data-cy="servicioId"
+            formControlName="servicioId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_empleadoId" jhiTranslate="backend2App.cita.empleadoId">Empleado Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="empleadoId"
+            id="field_empleadoId"
+            data-cy="empleadoId"
+            formControlName="empleadoId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombreEmpleado" jhiTranslate="backend2App.cita.nombreEmpleado">Nombre Empleado</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombreEmpleado"
+            id="field_nombreEmpleado"
+            data-cy="nombreEmpleado"
+            formControlName="nombreEmpleado"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_valorServicio" jhiTranslate="backend2App.cita.valorServicio">Valor Servicio</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorServicio"
+            id="field_valorServicio"
+            data-cy="valorServicio"
+            formControlName="valorServicio"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

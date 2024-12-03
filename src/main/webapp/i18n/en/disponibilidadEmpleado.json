@@ -1,0 +1,27 @@
+{
+  "backend2App": {
+    "disponibilidadEmpleado": {
+      "home": {
+        "title": "Disponibilidad Empleados",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Disponibilidad Empleado",
+        "createOrEditLabel": "Create or edit a Disponibilidad Empleado",
+        "notFound": "No Disponibilidad Empleados found"
+      },
+      "created": "A new Disponibilidad Empleado is created with identifier {{ param }}",
+      "updated": "A Disponibilidad Empleado is updated with identifier {{ param }}",
+      "deleted": "A Disponibilidad Empleado is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Disponibilidad Empleado {{ id }}?"
+      },
+      "detail": {
+        "title": "Disponibilidad Empleado"
+      },
+      "id": "ID",
+      "diaSemana": "Dia Semana",
+      "fechaInicio": "Fecha Inicio",
+      "fechaFin": "Fecha Fin",
+      "empleadoId": "Empleado Id"
+    }
+  }
+}

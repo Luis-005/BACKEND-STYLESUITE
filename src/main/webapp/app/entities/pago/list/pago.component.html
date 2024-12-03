@@ -1,0 +1,159 @@
+<div>
+  <h2 id="page-heading" data-cy="PagoHeading">
+    <span jhiTranslate="backend2App.pago.home.title">Pagos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="backend2App.pago.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-pago"
+        [routerLink]="['/pago/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="backend2App.pago.home.createLabel">Create a new Pago</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (pagos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="backend2App.pago.home.notFound">No Pagos found</span>
+    </div>
+  }
+
+  @if (pagos && pagos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="monto">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.monto">Monto</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaPago">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.fechaPago">Fecha Pago</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="metodoPago">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.metodoPago">Metodo Pago</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estado">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.estado">Estado</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="citaId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.citaId">Cita Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="carritoId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.carritoId">Carrito Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.pago.userId">User Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pago of pagos; track trackId(pago)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/pago', pago.id, 'view']">{{ pago.id }}</a>
+              </td>
+              <td>{{ pago.monto }}</td>
+              <td>{{ pago.fechaPago | formatMediumDatetime }}</td>
+              <td [jhiTranslate]="'backend2App.MetodoPagoEnum.' + (pago.metodoPago ?? 'null')">
+                {{
+                  { null: '', EFECTIVO: 'EFECTIVO', TARJETA: 'TARJETA', TRANSFERENCIA: 'TRANSFERENCIA', OTRO: 'OTRO' }[
+                    pago.metodoPago ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ pago.estado }}</td>
+              <td>{{ pago.citaId }}</td>
+              <td>{{ pago.carritoId }}</td>
+              <td>{{ pago.userId }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/pago', pago.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/pago', pago.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(pago)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (pagos && pagos.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

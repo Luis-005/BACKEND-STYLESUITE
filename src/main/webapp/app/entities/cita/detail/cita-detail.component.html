@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cita(); as citaRef) {
+      <div>
+        <h2 data-cy="citaDetailsHeading"><span jhiTranslate="backend2App.cita.detail.title">Cita</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ citaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.fechaCita">Fecha Cita</span></dt>
+          <dd>
+            <span>{{ citaRef.fechaCita | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.duracion">Duracion</span></dt>
+          <dd>
+            <span>{{ citaRef.duracion }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.estado">Estado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'backend2App.EstadoCitaEnum.' + (citaRef.estado ?? 'null')">{{
+              { null: '', PENDIENTE: 'PENDIENTE', CONFIRMADA: 'CONFIRMADA', CANCELADA: 'CANCELADA', PAGADA: 'PAGADA', OTRO: 'OTRO' }[
+                citaRef.estado ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.personaId">Persona Id</span></dt>
+          <dd>
+            <span>{{ citaRef.personaId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.nombrePersona">Nombre Persona</span></dt>
+          <dd>
+            <span>{{ citaRef.nombrePersona }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.establecimientoId">Establecimiento Id</span></dt>
+          <dd>
+            <span>{{ citaRef.establecimientoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.nombreEstablecimiento">Nombre Establecimiento</span></dt>
+          <dd>
+            <span>{{ citaRef.nombreEstablecimiento }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.servicioId">Servicio Id</span></dt>
+          <dd>
+            <span>{{ citaRef.servicioId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.empleadoId">Empleado Id</span></dt>
+          <dd>
+            <span>{{ citaRef.empleadoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.nombreEmpleado">Nombre Empleado</span></dt>
+          <dd>
+            <span>{{ citaRef.nombreEmpleado }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.cita.valorServicio">Valor Servicio</span></dt>
+          <dd>
+            <span>{{ citaRef.valorServicio }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cita', citaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

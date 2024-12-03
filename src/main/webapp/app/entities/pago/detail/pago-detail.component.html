@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pago(); as pagoRef) {
+      <div>
+        <h2 data-cy="pagoDetailsHeading"><span jhiTranslate="backend2App.pago.detail.title">Pago</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pagoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.monto">Monto</span></dt>
+          <dd>
+            <span>{{ pagoRef.monto }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.fechaPago">Fecha Pago</span></dt>
+          <dd>
+            <span>{{ pagoRef.fechaPago | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.metodoPago">Metodo Pago</span></dt>
+          <dd>
+            <span [jhiTranslate]="'backend2App.MetodoPagoEnum.' + (pagoRef.metodoPago ?? 'null')">{{
+              { null: '', EFECTIVO: 'EFECTIVO', TARJETA: 'TARJETA', TRANSFERENCIA: 'TRANSFERENCIA', OTRO: 'OTRO' }[
+                pagoRef.metodoPago ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.estado">Estado</span></dt>
+          <dd>
+            <span>{{ pagoRef.estado }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.citaId">Cita Id</span></dt>
+          <dd>
+            <span>{{ pagoRef.citaId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.carritoId">Carrito Id</span></dt>
+          <dd>
+            <span>{{ pagoRef.carritoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.pago.userId">User Id</span></dt>
+          <dd>
+            <span>{{ pagoRef.userId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pago', pagoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

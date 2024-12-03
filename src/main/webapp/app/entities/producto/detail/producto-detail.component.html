@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (producto(); as productoRef) {
+      <div>
+        <h2 data-cy="productoDetailsHeading"><span jhiTranslate="backend2App.producto.detail.title">Producto</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ productoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ productoRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ productoRef.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.precio">Precio</span></dt>
+          <dd>
+            <span>{{ productoRef.precio }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.cantidad">Cantidad</span></dt>
+          <dd>
+            <span>{{ productoRef.cantidad }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.urlImg">Url Img</span></dt>
+          <dd>
+            <span>{{ productoRef.urlImg }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.categoriaProductoId">Categoria Producto Id</span></dt>
+          <dd>
+            <span>{{ productoRef.categoriaProductoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.producto.establecimientoId">Establecimiento Id</span></dt>
+          <dd>
+            <span>{{ productoRef.establecimientoId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/producto', productoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

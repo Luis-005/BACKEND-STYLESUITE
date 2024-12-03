@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20241202190020"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "diaSemana",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "empleadoId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "DisponibilidadEmpleado",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

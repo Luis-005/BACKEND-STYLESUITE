@@ -1,0 +1,11 @@
+id;fecha_cita;duracion;estado;persona_id;nombre_persona;establecimiento_id;nombre_establecimiento;servicio_id;empleado_id;nombre_empleado;valor_servicio
+1;2024-12-02T18:57:07;12257;PAGADA;25551;unhappy lazy;12374;gown;26647;1363;provided object athwart;27040.21
+2;2024-12-02T06:59:37;27611;CANCELADA;14400;zowie huzzah;3112;lender disclosure boo;22827;1565;sermon;31881.25
+3;2024-12-02T05:26:53;12962;CANCELADA;17089;triangular;23832;veto emerge cow;17486;25852;lest although self-confidence;948.69
+4;2024-12-01T19:50:57;25008;PAGADA;953;impressive questioningly;18901;supposing determined deflate;23425;22550;willow phew;4169.48
+5;2024-12-01T19:17:30;30904;PENDIENTE;15926;enhance;7383;courageously equatorial;27309;4430;gadzooks zowie;2172.1
+6;2024-12-02T16:49:35;55;CANCELADA;32519;courageously;22071;about near whose;12405;4127;behind;2249.53
+7;2024-12-02T15:09:20;22854;CONFIRMADA;26716;minority;24006;swath swiftly;1687;9539;cheap;18715.38
+8;2024-12-02T05:32:17;26285;CONFIRMADA;11871;save boohoo;10248;woefully briefly veg;5209;20687;duh;1711.88
+9;2024-12-02T08:05:44;22605;PENDIENTE;10008;noisily;2367;bah;29115;22176;minor flawed fog;30834.48
+10;2024-12-02T18:49:40;17473;CONFIRMADA;18373;maul a;16569;interchange;16681;19481;with capsize;24427.68

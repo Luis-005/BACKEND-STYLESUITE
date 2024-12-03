@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-establecimiento-heading"
+        data-cy="EstablecimientoCreateUpdateHeading"
+        jhiTranslate="backend2App.establecimiento.home.createOrEditLabel"
+      >
+        Create or edit a Establecimiento
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backend2App.establecimiento.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="backend2App.establecimiento.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_direccion" jhiTranslate="backend2App.establecimiento.direccion">Direccion</label>
+          <input type="text" class="form-control" name="direccion" id="field_direccion" data-cy="direccion" formControlName="direccion" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telefono" jhiTranslate="backend2App.establecimiento.telefono">Telefono</label>
+          <input type="text" class="form-control" name="telefono" id="field_telefono" data-cy="telefono" formControlName="telefono" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_correoElectronico" jhiTranslate="backend2App.establecimiento.correoElectronico"
+            >Correo Electronico</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="correoElectronico"
+            id="field_correoElectronico"
+            data-cy="correoElectronico"
+            formControlName="correoElectronico"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_urlImg" jhiTranslate="backend2App.establecimiento.urlImg">Url Img</label>
+          <input type="text" class="form-control" name="urlImg" id="field_urlImg" data-cy="urlImg" formControlName="urlImg" />
+        </div>
+
+        @let horaAperturaRef = editForm.get('horaApertura')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_horaApertura" jhiTranslate="backend2App.establecimiento.horaApertura">Hora Apertura</label>
+          <input
+            type="text"
+            class="form-control"
+            name="horaApertura"
+            id="field_horaApertura"
+            data-cy="horaApertura"
+            formControlName="horaApertura"
+          />
+          @if (horaAperturaRef.invalid && (horaAperturaRef.dirty || horaAperturaRef.touched)) {
+            <div>
+              @if (editForm.get('horaApertura')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '5' }"
+                  >This field cannot be longer than 5 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        @let horaCierreRef = editForm.get('horaCierre')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_horaCierre" jhiTranslate="backend2App.establecimiento.horaCierre">Hora Cierre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="horaCierre"
+            id="field_horaCierre"
+            data-cy="horaCierre"
+            formControlName="horaCierre"
+          />
+          @if (horaCierreRef.invalid && (horaCierreRef.dirty || horaCierreRef.touched)) {
+            <div>
+              @if (editForm.get('horaCierre')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '5' }"
+                  >This field cannot be longer than 5 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_userId" jhiTranslate="backend2App.establecimiento.userId">User Id</label>
+          <input type="number" class="form-control" name="userId" id="field_userId" data-cy="userId" formControlName="userId" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

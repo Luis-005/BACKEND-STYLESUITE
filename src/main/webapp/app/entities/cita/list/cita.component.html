@@ -1,0 +1,191 @@
+<div>
+  <h2 id="page-heading" data-cy="CitaHeading">
+    <span jhiTranslate="backend2App.cita.home.title">Citas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="backend2App.cita.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cita"
+        [routerLink]="['/cita/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="backend2App.cita.home.createLabel">Create a new Cita</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (citas?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="backend2App.cita.home.notFound">No Citas found</span>
+    </div>
+  }
+
+  @if (citas && citas.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaCita">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.fechaCita">Fecha Cita</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="duracion">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.duracion">Duracion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estado">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.estado">Estado</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="personaId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.personaId">Persona Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombrePersona">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.nombrePersona">Nombre Persona</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="establecimientoId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.establecimientoId">Establecimiento Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombreEstablecimiento">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.nombreEstablecimiento">Nombre Establecimiento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="servicioId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.servicioId">Servicio Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="empleadoId">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.empleadoId">Empleado Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombreEmpleado">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.nombreEmpleado">Nombre Empleado</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="valorServicio">
+              <div class="d-flex">
+                <span jhiTranslate="backend2App.cita.valorServicio">Valor Servicio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cita of citas; track trackId(cita)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/cita', cita.id, 'view']">{{ cita.id }}</a>
+              </td>
+              <td>{{ cita.fechaCita | formatMediumDatetime }}</td>
+              <td>{{ cita.duracion }}</td>
+              <td [jhiTranslate]="'backend2App.EstadoCitaEnum.' + (cita.estado ?? 'null')">
+                {{
+                  { null: '', PENDIENTE: 'PENDIENTE', CONFIRMADA: 'CONFIRMADA', CANCELADA: 'CANCELADA', PAGADA: 'PAGADA', OTRO: 'OTRO' }[
+                    cita.estado ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ cita.personaId }}</td>
+              <td>{{ cita.nombrePersona }}</td>
+              <td>{{ cita.establecimientoId }}</td>
+              <td>{{ cita.nombreEstablecimiento }}</td>
+              <td>{{ cita.servicioId }}</td>
+              <td>{{ cita.empleadoId }}</td>
+              <td>{{ cita.nombreEmpleado }}</td>
+              <td>{{ cita.valorServicio }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/cita', cita.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/cita', cita.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(cita)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (citas && citas.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

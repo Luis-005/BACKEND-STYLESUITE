@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (persona(); as personaRef) {
+      <div>
+        <h2 data-cy="personaDetailsHeading"><span jhiTranslate="backend2App.persona.detail.title">Persona</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ personaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.persona.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ personaRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.persona.apellido">Apellido</span></dt>
+          <dd>
+            <span>{{ personaRef.apellido }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.persona.urlImg">Url Img</span></dt>
+          <dd>
+            <span>{{ personaRef.urlImg }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.persona.userId">User Id</span></dt>
+          <dd>
+            <span>{{ personaRef.userId }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.persona.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ personaRef.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.persona.urlmg">Urlmg</span></dt>
+          <dd>
+            <span>{{ personaRef.urlmg }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/persona', personaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

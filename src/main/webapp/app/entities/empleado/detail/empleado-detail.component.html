@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (empleado(); as empleadoRef) {
+      <div>
+        <h2 data-cy="empleadoDetailsHeading"><span jhiTranslate="backend2App.empleado.detail.title">Empleado</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ empleadoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ empleadoRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.apellido">Apellido</span></dt>
+          <dd>
+            <span>{{ empleadoRef.apellido }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.cargo">Cargo</span></dt>
+          <dd>
+            <span>{{ empleadoRef.cargo }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.salario">Salario</span></dt>
+          <dd>
+            <span>{{ empleadoRef.salario }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.urlmg">Urlmg</span></dt>
+          <dd>
+            <span>{{ empleadoRef.urlmg }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.estado">Estado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'backend2App.EstadoEmpleadoEnum.' + (empleadoRef.estado ?? 'null')">{{
+              { null: '', DISPONIBLE: 'DISPONIBLE', OCUPADO: 'OCUPADO', SUSPENDIDO: 'SUSPENDIDO' }[empleadoRef.estado ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="backend2App.empleado.establecimientoId">Establecimiento Id</span></dt>
+          <dd>
+            <span>{{ empleadoRef.establecimientoId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/empleado', empleadoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

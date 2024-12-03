@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20241202190024"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "monto",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "fechaPago",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "metodoPago",
+      "fieldType": "MetodoPagoEnum",
+      "fieldValues": "EFECTIVO,TARJETA,TRANSFERENCIA,OTRO"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "citaId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "carritoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Pago",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

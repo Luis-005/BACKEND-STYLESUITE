@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20241202190027"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "valorServicio",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "tipoServicio",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "establecimientoId",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "Servicios",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

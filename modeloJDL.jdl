@@ -1,0 +1,114 @@
+enum MetodoPagoEnum {
+  EFECTIVO,
+  TARJETA,
+  TRANSFERENCIA,
+  OTRO
+}
+
+enum EstadoCitaEnum {
+  PENDIENTE,
+  CONFIRMADA,
+  CANCELADA,
+  PAGADA,
+  OTRO
+}
+
+enum EstadoEmpleadoEnum {
+  DISPONIBLE,
+  OCUPADO,
+  SUSPENDIDO
+}
+
+entity Persona {
+  nombre String
+  apellido String
+  urlImg String
+  userId Long // Relación con el usuario de JHipster
+  telefono String
+  urlmg String
+}
+
+entity Empleado {
+  nombre String
+  apellido String
+  cargo String
+  salario Double
+  urlmg String
+  estado EstadoEmpleadoEnum // Estado del empleado
+  establecimientoId Long // Relación con Establecimiento
+}
+
+entity DisponibilidadEmpleado {
+  diaSemana String // Lunes, Martes, etc.
+  fechaInicio Instant // Hora de inicio de disponibilidad
+  fechaFin Instant // Hora de fin de disponibilidad
+  empleadoId Long // Relación con Empleado
+}
+
+entity Cita {
+  fechaCita Instant // Fecha y hora de inicio de la cita
+  duracion Integer // Duración en minutos
+  estado EstadoCitaEnum
+  personaId Long // Relación con Persona
+  nombrePersona String
+  establecimientoId Long // Relación con Establecimiento
+  nombreEstablecimiento String
+  servicioId Long // Relación con Servicio
+  empleadoId Long // Relación con Empleado
+  nombreEmpleado String
+  valorServicio BigDecimal
+}
+
+entity Servicios {
+  valorServicio BigDecimal
+  tipoServicio String
+  descripcion String
+  establecimientoId Long // Relación con Establecimiento
+}
+
+entity Establecimiento {
+  nombre String
+  direccion String
+  telefono String
+  correoElectronico String
+  urlImg String
+  horaApertura String maxlength(5) // Hora de apertura del establecimiento
+  horaCierre String maxlength(5) // Hora de cierre del establecimiento
+  userId Long // Relación con el usuario propietario
+}
+
+entity Producto {
+  nombre String
+  descripcion String
+  precio BigDecimal
+  cantidad Integer
+  urlImg String
+  categoriaProductoId Long // Relación con CategoriaProducto
+  establecimientoId Long // Relación con Establecimiento
+}
+
+entity CategoriaProducto {
+  nombre String
+  establecimientoId Long // Relación con Establecimiento
+}
+
+entity GaleriaImagen {
+  nombre String
+  descripcion String
+  urlImagen String
+  establecimientoId Long // Relación con Establecimiento
+}
+
+entity Pago {
+  monto BigDecimal
+  fechaPago Instant
+  metodoPago MetodoPagoEnum
+  estado String
+  citaId Long // Relación con Cita
+  carritoId Long // Relación con Carrito
+  userId Long // Relación con el usuario que realizó el pago
+}
+
+dto * with mapstruct
+service all with serviceImpl
+paginate * with pagination

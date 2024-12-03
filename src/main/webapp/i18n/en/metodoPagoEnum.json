@@ -1,0 +1,11 @@
+{
+  "backend2App": {
+    "MetodoPagoEnum": {
+      "null": "",
+      "EFECTIVO": "EFECTIVO",
+      "TARJETA": "TARJETA",
+      "TRANSFERENCIA": "TRANSFERENCIA",
+      "OTRO": "OTRO"
+    }
+  }
+}

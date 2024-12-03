@@ -1,0 +1,31 @@
+{
+  "backend2App": {
+    "establecimiento": {
+      "home": {
+        "title": "Establecimientos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Establecimiento",
+        "createOrEditLabel": "Create or edit a Establecimiento",
+        "notFound": "No Establecimientos found"
+      },
+      "created": "A new Establecimiento is created with identifier {{ param }}",
+      "updated": "A Establecimiento is updated with identifier {{ param }}",
+      "deleted": "A Establecimiento is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Establecimiento"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "direccion": "Direccion",
+      "telefono": "Telefono",
+      "correoElectronico": "Correo Electronico",
+      "urlImg": "Url Img",
+      "horaApertura": "Hora Apertura",
+      "horaCierre": "Hora Cierre",
+      "userId": "User Id"
+    }
+  }
+}

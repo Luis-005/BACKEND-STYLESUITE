@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-disponibilidad-empleado-heading"
+        data-cy="DisponibilidadEmpleadoCreateUpdateHeading"
+        jhiTranslate="backend2App.disponibilidadEmpleado.home.createOrEditLabel"
+      >
+        Create or edit a Disponibilidad Empleado
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="backend2App.disponibilidadEmpleado.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_diaSemana" jhiTranslate="backend2App.disponibilidadEmpleado.diaSemana">Dia Semana</label>
+          <input type="text" class="form-control" name="diaSemana" id="field_diaSemana" data-cy="diaSemana" formControlName="diaSemana" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaInicio" jhiTranslate="backend2App.disponibilidadEmpleado.fechaInicio"
+            >Fecha Inicio</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaInicio"
+              data-cy="fechaInicio"
+              type="datetime-local"
+              class="form-control"
+              name="fechaInicio"
+              formControlName="fechaInicio"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaFin" jhiTranslate="backend2App.disponibilidadEmpleado.fechaFin">Fecha Fin</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaFin"
+              data-cy="fechaFin"
+              type="datetime-local"
+              class="form-control"
+              name="fechaFin"
+              formControlName="fechaFin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_empleadoId" jhiTranslate="backend2App.disponibilidadEmpleado.empleadoId">Empleado Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="empleadoId"
+            id="field_empleadoId"
+            data-cy="empleadoId"
+            formControlName="empleadoId"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
